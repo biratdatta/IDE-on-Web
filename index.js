@@ -1,6 +1,6 @@
 const { exec } = require('child_process');
 
-exec('curl -fsSL https://code-server.dev/install.sh | sh', (error, stdout, stderr) => {
+exec('sh code-server/install.sh', (error, stdout, stderr) => {
   if (error) {
     console.error(`An error occurred: ${error.message}`);
     return;
