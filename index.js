@@ -1,9 +1,17 @@
-const { exec } = require('child_process');
+const { execSync } = require('child_process');
 
-exec('curl -fsSL https://code-server.dev/install.sh | sh', (error, stdout, stderr) => {
-  if (error) {
-    console.error(`An error occurred: ${error.message}`);
-    return;
+function installCodeServer() {
+  try {
+    execSync('curl -fsSL https://code-server.dev/install.sh | sh');
+    console.log('code-server installed successfully.');
+
+    // Execute code-server
+    execSync('code-server');
+  } catch (error) {
+    console.error('An error occurred while installing code-server:', error);
   }
-  console.log(stdout);
-});
+}
+
+installCodeServer();
+
+
